@@ -13,10 +13,10 @@ Code for the paper:
 
 Standard EOT aligns datasets by minimizing transport cost subject to **uniform empirical marginals**. When two datasets share similar geometry but differ in sampling density, EOT matches points by relative density rather than geometric proximity — producing geometrically misleading correspondences.
 
-**DR-EOT** addresses this by reweighting the kernel and marginals by the local sampling density, controlled by a parameter θ ∈ [0, 1]:
-- θ = 0: standard EOT (density-sensitive)
-- θ = 1: geometry-driven alignment (density-discounted)
-- Intermediate θ: interpolation between the two regimes
+**DR-EOT** addresses this by reweighting the kernel and marginals by the local sampling density, controlled by a parameter $\theta \in [0, 1]$:
+- $\theta = 0$: standard EOT (density-sensitive)
+- $\theta = 1$: geometry-driven alignment (density-discounted)
+- Intermediate $\theta$: interpolation between the two regimes
 
 ## Installation
 
@@ -127,12 +127,18 @@ dreot/
 
 ## Algorithm Summary
 
-Given datasets X = {x_i}_{i=1}^m and Y = {y_j}_{j=1}^n, density estimates f̂_i and ĝ_j, regularization ε > 0, and discounting factor θ ∈ [0,1]:
+Given datasets $X = \{x_i\}_{i=1}^m$ and $Y = \{y_j\}_{j=1}^n$, density estimates $\hat{f}_i$ and $\hat{g}_j$, regularization $\varepsilon > 0$, and discounting factor $\theta \in [0,1]$:
 
-1. **Scaling constant:**  S^(θ) = (1/m Σ 1/f̂_i^θ) / (1/n Σ 1/ĝ_j^θ)
-2. **Adjusted kernel:**  M_ij^(θ) = exp(-‖x_i − y_j‖² / ε) / (f̂_i^θ ĝ_j^θ)
-3. **Sinkhorn scaling:** find α ∈ R^m_+, β ∈ R^n_+ s.t. marginal constraints hold
-4. **Output plan:**  W_ij^(θ) = α_i exp(-‖x_i − y_j‖² / ε) β_j
+1. **Scaling constant:**
+$$S^{(\theta)} = \frac{\frac{1}{m}\sum_i \hat{f}_i^{-\theta}}{\frac{1}{n}\sum_j \hat{g}_j^{-\theta}}$$
+
+2. **Adjusted kernel:**
+$$M_{ij}^{(\theta)} = \frac{\exp\!\left(-\|x_i - y_j\|^2 / \varepsilon\right)}{\hat{f}_i^{\theta}\,\hat{g}_j^{\theta}}$$
+
+3. **Sinkhorn scaling:** find $\alpha \in \mathbb{R}^m_+$, $\beta \in \mathbb{R}^n_+$ such that marginal constraints hold
+
+4. **Output plan:**
+$$W_{ij}^{(\theta)} = \alpha_i \exp\!\left(-\|x_i - y_j\|^2 / \varepsilon\right) \beta_j$$
 
 ## Citation
 
