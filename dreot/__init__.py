@@ -19,6 +19,7 @@ from .sinkhorn import sinkhorn_balance as sinkhorn_eot
 from .sinkhorn import sinkhorn_density_adjusted as sinkhorn_dreot
 from .sinkhorn import SinkhornNumericalError
 from .kde import GlobalBootstrapLepski, BootstrapLepski
+from .models import WrappedGaussianMixture, Arc, Manifold
 
 __version__ = "0.1.0"
 __all__ = [
@@ -27,4 +28,7 @@ __all__ = [
     "SinkhornNumericalError",
     "GlobalBootstrapLepski",
     "BootstrapLepski",
+    "WrappedGaussianMixture",
+    "Arc",
+    "Manifold",
 ]

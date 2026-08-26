@@ -24,27 +24,3 @@ def knn_median(dist_matrix, k, axis=1):
     kth_nn = np.max(knn_distances, axis=axis)
     return np.median(kth_nn)
 
-
-def self_normalized_kde(dist, bandwidth, leave_one_out=True):
-    """
-    Leave-one-out self-normalized KDE.
-
-    Parameters
-    ----------
-    dist : np.ndarray
-        Pairwise squared distance matrix.
-    bandwidth : float
-        KDE bandwidth.
-    leave_one_out : bool, default True
-        If True, exclude self-distances by setting diagonal to inf.
-
-    Returns
-    -------
-    np.ndarray, shape (n, 1)
-        Normalized density estimates (mean = 1). Input array is not modified.
-    """
-    if leave_one_out:
-        dist = dist.copy()
-        np.fill_diagonal(dist, np.inf)
-    density = np.mean(np.exp(-dist / bandwidth), axis=1, keepdims=True)
-    return density / np.mean(density)

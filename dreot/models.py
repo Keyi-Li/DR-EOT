@@ -41,34 +41,11 @@ class WrappedGaussianMixture:
         ax.set_ylabel('Density')
 
 
-class UniformDistribution:
-    """Uniform distribution on [a, a+L]."""
-
-    def __init__(self, a=0.0, L=2*np.pi, **kwargs):
-        self.a = float(a)
-        self.L = float(L)
-
-    def pdf(self, theta):
-        theta = np.asarray(theta, dtype=float)
-        return np.where((theta >= self.a) & (theta <= self.a + self.L), 1.0 / self.L, 0.0)
-
-    def sample(self, n):
-        return np.sort(np.random.uniform(self.a, self.a + self.L, size=n))
-
-    def plot_pdf(self, ax=None, num_points=1000, **plot_kwargs):
-        if ax is None:
-            ax = plt.gca()
-        thetas = np.linspace(self.a, self.a + self.L, num_points)
-        ax.plot(thetas, self.pdf(thetas), **plot_kwargs)
-        ax.set_xlabel('theta')
-        ax.set_ylabel('Density')
-
-
 @dataclass
 class Arc:
     center: Tuple[float, float]
     radius: float
-    density: Any  # UniformDistribution or WrappedGaussianMixture
+    density: Any  # WrappedGaussianMixture or compatible density object
     name: str = ""
 
     def __post_init__(self):
