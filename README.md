@@ -4,7 +4,8 @@ Code for the paper:
 
 > **Density-Reweighted Entropic Optimal Transport: Decoupling Geometry from Sampling Density**  
 > Keyi Li, Yuval Kluger, Boris Landa  
-> Program of Applied & Computational Mathematics, Yale University
+> Program of Applied & Computational Mathematics, Yale University  
+> [arXiv:2608.16506](https://arxiv.org/abs/2608.16506)
 
 ---
 
@@ -20,7 +21,7 @@ Standard EOT aligns datasets by minimizing transport cost subject to **uniform e
 ## Installation
 
 ```bash
-git clone https://github.com/your-username/DR-EOT.git
+git clone https://github.com/Keyi-Li/DR-EOT.git
 cd DR-EOT
 pip install -e .
 
@@ -136,9 +137,13 @@ Given datasets X = {x_i}_{i=1}^m and Y = {y_j}_{j=1}^n, density estimates f̂_i 
 ## Citation
 
 ```bibtex
-@article{li2024dreot,
+@misc{li2026dreot,
   title={Density-Reweighted Entropic Optimal Transport: Decoupling Geometry from Sampling Density},
   author={Li, Keyi and Kluger, Yuval and Landa, Boris},
-  year={2024}
+  year={2026},
+  eprint={2608.16506},
+  archivePrefix={arXiv},
+  primaryClass={stat.ML},
+  url={https://arxiv.org/abs/2608.16506}
 }
 ```
