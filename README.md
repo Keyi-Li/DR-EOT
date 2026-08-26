@@ -133,12 +133,12 @@ Given datasets $X = \{x_i\}_{i=1}^m$ and $Y = \{y_j\}_{j=1}^n$, density estimate
 $$S^{(\theta)} = \frac{\frac{1}{m}\sum_i \hat{f}_i^{-\theta}}{\frac{1}{n}\sum_j \hat{g}_j^{-\theta}}$$
 
 2. **Adjusted kernel:**
-$$M_{ij}^{(\theta)} = \frac{\exp\!\left(-\|x_i - y_j\|^2 / \varepsilon\right)}{\hat{f}_i^{\theta}\,\hat{g}_j^{\theta}}$$
+$$M_{ij}^{(\theta)} = \frac{\exp\left(-\|x_i - y_j\|^2 / \varepsilon\right)}{\hat{f}_i^{\theta}\,\hat{g}_j^{\theta}}$$
 
 3. **Sinkhorn scaling:** find $\alpha \in \mathbb{R}^m_+$, $\beta \in \mathbb{R}^n_+$ such that marginal constraints hold
 
 4. **Output plan:**
-$$W_{ij}^{(\theta)} = \alpha_i \exp\!\left(-\|x_i - y_j\|^2 / \varepsilon\right) \beta_j$$
+$$W_{ij}^{(\theta)} = \alpha_i \exp\left(-\|x_i - y_j\|^2 / \varepsilon\right) \beta_j$$
 
 ## Citation
 
